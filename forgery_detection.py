@@ -1,3 +1,4 @@
+import imageio
 import cv2
 import numpy as np
 
@@ -128,7 +129,7 @@ for i in range(0, sim_array.shape[0]):
         for k in range(0,7):
             prediction_mask[index1+j][index2+k] = 255
             prediction_mask[index3+j][index4+k] = 255
-
+imageio.imwrite('..//image_forgery_cmfd_dct//Outputs//prediction_mask.png', prediction_mask)
 print("painting over!")
 
 #----------------------------------------------------------------------------------------
@@ -158,15 +159,17 @@ recall = TP/(TP+FN)
 accuracy = 2*precision*recall/(precision+recall)
 
 print('Accuracy:', accuracy)
+print('\nPrecision: ', precision)
+print('\nRecall: ', recall)
 
 print("accuracy calculated!")
 
 #----------------------------------------------------------------------------------------
 
-cv2.imshow("Prediction Mask", prediction_mask)
-cv2.imshow("Real Mask", mask)
-cv2.imshow('Original Image', image)
-cv2.imshow('Gray Image', gray)
+#cv2.imshow("Prediction Mask", prediction_mask)
+#cv2.imshow("Real Mask", mask)
+#cv2.imshow('Original Image', image)
+#cv2.imshow('Gray Image', gray)
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
